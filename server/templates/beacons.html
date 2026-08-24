@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %} :: Beacons{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="page-title">BEACON<span>S</span></div>
+  <div class="page-subtitle">Live implant registry — auto-refreshes every 3s</div>
+</div>
+
+<div id="beacon-alert" class="alert"></div>
+
+<!-- Beacon table -->
+<div class="card">
+  <div class="card-title">Registered Beacons</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>●</th>
+          <th>Name</th>
+          <th>UUID</th>
+          <th>User @ Host</th>
+          <th>OS</th>
+          <th>Sleep</th>
+          <th>Status</th>
+          <th>Last Seen</th>
+        </tr>
+      </thead>
+      <tbody id="beacon-tbody">
+        <tr><td colspan="8" class="empty">Waiting for beacons...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="beacon-detail" style="display:none;">
+
+  <div class="card">
+    <div class="card-title">Beacon Detail</div>
+    <div class="detail-grid">
+      <div class="detail-row">
+        <span class="detail-key">UUID</span>
+        <span class="detail-val" id="detail-uuid">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">Hostname</span>
+        <span class="detail-val" id="detail-host">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">Username</span>
+        <span class="detail-val" id="detail-user">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">OS / Arch</span>
+        <span class="detail-val" id="detail-os">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">PID</span>
+        <span class="detail-val" id="detail-pid">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">Sleep</span>
+        <span class="detail-val" id="detail-sleep">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">First Seen</span>
+        <span class="detail-val" id="detail-first">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">Last Seen</span>
+        <span class="detail-val" id="detail-last">—</span>
+      </div>
+    </div>
+
+    <div class="rename-row">
+      <input type="text" id="detail-name-input" placeholder="Give this beacon a nickname..." style="max-width:300px;" />
+      <button class="btn btn-ghost btn-sm" onclick="renameBeacon()">✎ Save Nickname</button>
+    </div>
+  </div>
+
+  <!-- Task queue -->
+  <div class="card">
+    <div class="card-title">Task Queue</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Task ID</th>
+            <th>Command</th>
+            <th>Status</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody id="task-tbody">
+          <tr><td colspan="4" class="empty">No tasks yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Task output -->
+  <div class="card">
+    <div class="card-title">Task Output</div>
+    <div class="output-box" id="task-output" style="min-height:160px;">
+      Select a task above to view its output.
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/beacons.js"></script>
+<script>
+  loadBeacons();
+  setInterval(() => {
+    loadBeacons();
+    if (selectedBeaconUuid) loadTaskQueue(selectedBeaconUuid);
+  }, 3000);
+</script>
+{% endblock %}

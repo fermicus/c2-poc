@@ -1,0 +1,20 @@
+.output-box {
+    background: #08060f;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: #c8aaff;
+    font-family: var(--font);
+    font-size: 12px;
+    padding: 14px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-y: auto;
+    line-height: 1.7;
+}
+
+.output-box .out-header {
+    color: var(--cyan);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}

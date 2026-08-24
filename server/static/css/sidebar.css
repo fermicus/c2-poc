@@ -1,0 +1,134 @@
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: var(--bg-panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--purple),
+        var(--pink),
+        transparent
+    );
+    opacity: 0.5;
+}
+
+.sidebar-logo {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo-img {
+    width: 100%;
+    max-height: 48px;
+    object-fit: contain;
+    object-position: left;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Nav items */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.nav-item:hover {
+    color: var(--cyan);
+    background: rgba(0, 207, 255, 0.05);
+    border-left-color: var(--cyan-dim);
+}
+
+.nav-item.active {
+    color: var(--pink);
+    background: rgba(255, 69, 0, 0.08);
+    border-left-color: var(--pink);
+}
+
+/* Nav svg icons */
+.nav-icon-svg {
+    width: 15px;
+    height: 15px;
+    filter: var(--filter-dim);
+    transition: filter 0.15s;
+    flex-shrink: 0;
+}
+
+.nav-item:hover .nav-icon-svg  { filter: var(--filter-cyan); }
+.nav-item.active .nav-icon-svg { filter: var(--filter-pink); }
+
+/* Sidebar footer */
+.sidebar-footer   { padding-bottom: 8px; }
+
+.sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 8px;
+}
+
+/* Nuke button */
+.nuke-btn {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+.nuke-btn:hover {
+    color: var(--red) !important;
+    background: rgba(255, 69, 0, 0.08) !important;
+    border-left-color: var(--red) !important;
+}
+
+.nuke-btn:hover .nav-icon-svg {
+    filter: var(--filter-pink);
+}
+
+.nav-icon {
+    color: var(--text-dim);
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+    transition: color 0.15s;
+}
+
+.icon-svg {
+    width: 14px;
+    height: 14px;
+    filter: var(--filter-dim);
+}
+
+.nav-item:hover .icon-svg  { filter: var(--filter-cyan); }
+.nav-item.active .icon-svg { filter: var(--filter-pink); }

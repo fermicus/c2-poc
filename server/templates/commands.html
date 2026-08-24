@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %} :: Commands{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="page-title">COMMAND<span>S</span></div>
+  <div class="page-subtitle">Queue tasks for active beacons</div>
+</div>
+
+<!-- Send command -->
+<div class="card">
+  <div class="card-title">Send Command</div>
+
+  <div id="cmd-alert" class="alert"></div>
+
+  <div class="form-row">
+    <span class="form-label">Target</span>
+    <select id="cmd-beacon-select"></select>
+  </div>
+
+  <div class="form-row">
+    <span class="form-label">Command</span>
+    <input type="text" id="cmd-input" placeholder="e.g. whoami /all" autocomplete="off" />
+  </div>
+
+  <div style="display:flex; justify-content:flex-end; margin-top:8px;">
+    <button class="btn" onclick="sendCommand()">
+      <img src="/static/assets/icons/send.svg" alt="" class="btn-icon" /> Send
+    </button>
+  </div>
+</div>
+
+<!-- Presets -->
+<div class="card">
+  <div class="card-title">Preset Commands</div>
+
+  <div id="preset-alert" class="alert"></div>
+  <div id="presets-grid" class="presets-grid"></div>
+
+  <!-- Add preset -->
+  <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+    <div class="card-title" style="margin-bottom:12px;">Add Preset</div>
+    <div class="form-row">
+      <span class="form-label">Name</span>
+      <input type="text" id="preset-name-input" placeholder="e.g. Network Info" style="max-width:280px;" />
+    </div>
+    <div class="form-row">
+      <span class="form-label">Command</span>
+      <input type="text" id="preset-cmd-input" placeholder="e.g. ipconfig /all" />
+    </div>
+    <div style="display:flex; justify-content:flex-end; margin-top:8px;">
+      <button class="btn btn-ghost btn-sm" onclick="addPreset()">
+        <img src="/static/assets/icons/add.svg" alt="" class="btn-icon" /> Save Preset
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/commands.js"></script>
+<script>
+  loadCommandsPage();
+  setInterval(() => populateBeaconDropdown("cmd-beacon-select"), 5000);
+</script>
+{% endblock %}

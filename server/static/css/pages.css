@@ -1,0 +1,108 @@
+/* Home Page */
+@font-face {
+    font-family: 'copixel';
+    src: url('/static/assets/Copixel.otf') format('opentype');
+}
+
+.home-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    text-align: center;
+    gap: 20px;
+}
+
+.home-logo  { width: 512px; }
+
+.home-title {
+    width: fit-content;
+    height: fit-content;
+}
+
+.home-title span { color: var(--pink); }
+
+.home-sub {
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.home-divider {
+    width: 280px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--purple), transparent);
+}
+
+.home-stack {
+    color: var(--text-dim);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.home-stack span { color: var(--cyan); }
+
+.home-btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.presets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.preset-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.preset-card:hover {
+    border-color: var(--purple-dim);
+    box-shadow: 0 0 10px var(--purple-glow);
+}
+
+.preset-name {
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.preset-cmd {
+    color: var(--text-dim);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.preset-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.home-title {
+  font-size: 72px;
+  letter-spacing: 8px;
+  color: var(--text-head);
+  text-transform: uppercase;
+  width: fit-content;
+  height: fit-content;
+  font-family: "copixel";
+}
+
+.page-title {
+    font-family: "copixel";
+}
+
+.home-title span { color: var(--pink); }

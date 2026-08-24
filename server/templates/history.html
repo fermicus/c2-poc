@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} :: History{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="page-title">HISTOR<span>Y</span></div>
+  <div class="page-subtitle">Task results for selected beacon</div>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+  <div class="form-row" style="margin-bottom:0;">
+    <span class="form-label">Beacon</span>
+    <select id="hist-beacon-select" onchange="loadHistory()"></select>
+    <button class="btn btn-ghost btn-sm" onclick="loadHistory()">
+      <img src="/static/assets/icons/refresh.svg" alt="" class="btn-icon" /> Refresh
+    </button>
+  </div>
+</div>
+
+<div class="split">
+  <!-- Task list -->
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title">Results</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Task ID</th>
+            <th>Command</th>
+            <th>Exit</th>
+            <th>Received</th>
+          </tr>
+        </thead>
+        <tbody id="hist-tbody">
+          <tr><td colspan="4" class="empty">Select a beacon above.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Output panel -->
+  <div class="card" style="margin-bottom:0;">
+    <div class="card-title">Output</div>
+    <div class="output-box" id="hist-output" style="min-height:400px;">
+      Select a task to view output.
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/history.js"></script>
+<script>loadHistoryPage();</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} :: Home{% endblock %}
+
+{% block content %}
+<div class="home-center">
+  <div>
+      <div class="home-title">HELIOS <span>C2</span></div>
+    <div class="home-sub">Command and Control (C2) Framework</div>
+  </div>
+
+  <div class="home-divider"></div>
+
+  <div class="home-stack">
+    Built with
+    <span>Python</span> ·
+    <span>Flask</span> ·
+    <span>Rust</span> ·
+    <span>SQLite</span>
+  </div>
+
+  <div class="home-btn-row">
+    <a href="/beacons" class="btn">
+      <img src="/static/assets/icons/arrows-to-eye.svg" alt="" class="btn-icon" /> View Beacons
+    </a>
+    <a href="https://github.com" target="_blank" class="btn btn-ghost">
+      <img src="/static/assets/icons/github.svg" alt="" style="width:12px;height:12px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1);" />
+      Source
+    </a>
+  </div>
+</div>
+{% endblock %}
